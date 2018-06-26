@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="#">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <title>Smart Mall</title>
+
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="icon" sizes="192x192" href="images/android-desktop.png">
+
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+  <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
+
+  <!-- Tile icon for Win8 (144x144 + tile color) -->
+  <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+  <meta name="msapplication-TileColor" content="#3372DF">
+
+  <link rel="shortcut icon" href="images/favicon.png">
+
+  <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+  -->
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_purple-pink.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
+      <div class="mdl-layout mdl-layout__header-row" style="overflow:hidden;">
+        <h3>Smart Mall</h3>
+        <div class="material-icons mdl-badge mdl-badge--overlap" data-badge="0" id="notif_val" style="float:right; z-index:999; margin-left:80% ;">
+        <button class="mdl-button mdl-js-button mdl-button--icon" onclick="showNotif()">
+            <i class="material-icons">notifications</i>
+          </button>
+          </div>
+              </div>
+
+
+
+      <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+      </div>
+      <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
+        <a href="#overview" class="mdl-layout__tab is-active">Products</a>
+        <a href="#features" class="mdl-layout__tab">Add a product</a>
+        <a href="path.html" class="mdl-layout__tab">User Path</a>
+      </div>
+    </header>
+    <main class="mdl-layout__content">
+      <div class="mdl-layout__tab-panel is-active" id="overview">
+
+
+        <section class="section--footer mdl-color--white mdl-grid" id="footer">
+
+        </section>
+      </div>
+            
+      <div class="mdl-layout__tab-panel" id="features">
+        <section class="section--center mdl-grid mdl-grid--no-spacing">
+
+          <div class="mdl-cell mdl-cell--12-col">
+            <div class="demo-card-event mdl-card mdl-cell--12-col mdl-shadow--2dp">
+              <div class="mdl-card__title mdl-card--expand">
+                <center>
+                  <form action="#" id = "product-reg">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                      <input class="mdl-textfield__input" type="text" id="rack_id" pattern="-?[0-9]*([0-9]+)?">
+                      <label class="mdl-textfield__label" for="rack_id">Rack No.</label>
+                      <span class="mdl-textfield__error">Input is not a number!</span>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                      <input class="mdl-textfield__input" type="text" id="Title">
+                      <label class="mdl-textfield__label" for="Title">Product Title</label>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                      <input class="mdl-textfield__input" type="text" id="Description">
+                      <label class="mdl-textfield__label" for="Description">Product Description</label>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                      <input class="mdl-textfield__input" type="text" id="item_weight" pattern="-?[0-9]*(\.[0-9]+)?">
+                      <label class="mdl-textfield__label" for="item_weight">Product Weight</label>
+                      <span class="mdl-textfield__error">Input is not a number!</span>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                      <input class="mdl-textfield__input" type="text" id="Expiry_Date">
+                      <label class="mdl-textfield__label" for="Expiry_Date">Product Expiry Date</label>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                      <input class="mdl-textfield__input" type="text" id="Price" pattern="-?[0-9]*(\.[0-9]+)?">
+                      <label class="mdl-textfield__label" for="Price">Product Price</label>
+                      <span class="mdl-textfield__error">Input is not a number!</span>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                      <input class="mdl-textfield__input" type="text" id="min_val" pattern="-?[0-9]*([0-9]+)?">
+                      <label class="mdl-textfield__label" for="min_val">Minimum Product Qty.</label>
+                      <span class="mdl-textfield__error">Input is not a number!</span>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                      <input class="mdl-textfield__input" type="text" id="img_url">
+                      <label class="mdl-textfield__label" for="img_url">Product Image URL</label>
+                    </div>
+                    <p>or</p>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                      <input class="mdl-textfield__input" type="file" id="img_file">
+                    </div>
+                  </form>
+                </div>
+                <div class="mdl-card__actions mdl-card--no-spacing">
+                  <center>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit" onclick="sendData()">Submit
+                      <i class="material-icons right">send</i>
+                    </button>
+                    <br />&nbsp;
+                  </center>
+                </div>
+              </div>
+            </center>
+          </section>
+        </div>
+
+        <footer class="mdl-mega-footer">
+          <div class="mdl-mega-footer--middle-section">
+            <div class="mdl-mega-footer--drop-down-section">
+
+              <div id="demo-toast-example" class="mdl-js-snackbar mdl-snackbar">
+                <div class="mdl-snackbar__text"></div>
+                <button class="mdl-snackbar__action" type="button"></button>
+              </div>
+             <p>MiCE IoT Lab | Mckinsey & Company
+             </p>
+  <dialog class="mdl-dialog">
+    <div class="mdl-dialog__content">
+      <ul id="notifications_val"></ul>
+    </div>
+    <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+      <button type="button" class="mdl-button clear">Clear</button>
+    </div>
+    <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+      <button type="button" class="mdl-button close">close</button>
+    </div>
+  </dialog>
+  <div style="float:right;">
+  Rack 1 weight (in gm) : <span id="rack1"></span>
+  <br>
+  Rack 2 weight (in gm) : <span id="rack2"></span>
+</div>
+        </footer>
+      </main>
+
+    </div>
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+    <script src="jquery2.0.3.min.js"></script>
+    <script type="text/javascript">
+    var notifications_array = [];
+        var config = {
+          apiKey: "AIzaSyBJ58c3KDWixR9BB25BZc_CL-el8vbmpjo",
+          authDomain: "iot-lab-2f430.firebaseapp.com",
+          databaseURL: "https://iot-lab-2f430.firebaseio.com",
+          projectId: "iot-lab-2f430",
+          storageBucket: "iot-lab-2f430.appspot.com",
+          messagingSenderId: "851963171224"
+        };
+        firebase.initializeApp(config);
+      function doSomething() {
+   //do whatever you want here
+      }
+      function sendData(){
+        var img = $("#img_url").val();
+        // if(!fimg){
+        //   console.log("Uploading file");
+        //   const ref = firebase.storage().ref();
+        //   const file = $("#img_file").get(0).files[0];
+        //   const name = file.name;
+        //   const metadata = { contentType: file.type };
+        //   const task = ref.child(name).put(file, metadata);
+        //   setTimeout(doSomething, 3000);
+        //   var dref = firebase.storage().ref(name);
+        //   img = dref.getDownloadURL().then(function(url){
+        //     console.log(url);
+        //     return url;
+        //   });
+        // }
+        //console.log(img);
+        var rack_id = $("#rack_id").val();
+        var pname = $("#Title").val();
+        var descp = $("#Description").val();
+        var weight = $("#item_weight").val();
+        var date = $("#Expiry_Date").val();
+        var price = $("#Price").val();
+        var min_val = $("#min_val").val();
+        var ref_url = '/'+rack_id;
+
+        var newItem =
+        {
+          Description: descp,
+          Expiry_Date: date,
+          Price:price,
+          Title:pname,
+          Threshold : min_val,
+          current_weight:0,
+          img_url: img,
+          item_weight: weight
+          };
+          console.log(newItem);
+
+
+        firebase.database().ref(ref_url).update(newItem, function callback() {
+          $('#product-reg')[0].reset();
+        //Create a new card if the card is added to firebase successfully
+          //console.log("Creating a card");
+          createCard(newItem,0,rack_id);
+          //console.log("Loading Snackbar");
+          success();
+        });
+      }
+      function success() {
+        var snackbarContainer = document.querySelector('#demo-toast-example');
+        'use strict';
+        var data = {message: 'Product Added to Database'};
+        snackbarContainer.MaterialSnackbar.showSnackbar(data);
+      }
+
+        //Create a card dynamically
+        function createCard(data,item_cnt,id) {
+          //console.log("Creating a card");
+          var footer = document.getElementById('footer');
+          var parent = document.getElementById('overview');
+          var section = document.createElement('section');
+          section.className = 'section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp';
+          var header = document.createElement('header');
+          header.className = 'section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--white mdl-color-text--white';
+          var image = document.createElement('img')
+          image.id = 'product-image';
+          image.style.width = '200px';
+          image.style.height = 'auto'
+          image.src = data.img_url;
+          header.appendChild(image);
+          var outer_div = document.createElement('div');
+          outer_div.className = 'mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone';
+          var inner_div = document.createElement('div');
+          inner_div.className = 'mdl-card__supporting-text';
+          var h4 = document.createElement('h4');
+          h4.id = 'product-name';
+          h4.textContent = data.Title;
+          var span = document.createElement('span');
+          span.id = 'product-dscp';
+          span.textContent = data.Description;
+          var h6_1 = document.createElement('h6');
+          h6_1.textContent = 'Item Count:';
+          var h6_1_span = document.createElement('span');
+          var item_cnt_id = 'item-count-' + id;
+          h6_1_span.id = item_cnt_id;
+          h6_1_span.textContent = item_cnt;
+          var h6_2 = document.createElement('h6');
+          h6_2.textContent = 'Price:';
+          var h6_2_span = document.createElement('span');
+          h6_2_span.id = 'product-price';
+          h6_2_span.textContent = data.Price;
+          h6_1.appendChild(h6_1_span);
+          h6_2.appendChild(h6_2_span);
+          inner_div.appendChild(h4);
+          inner_div.appendChild(span);
+          inner_div.appendChild(h6_1);
+          inner_div.appendChild(h6_2);
+          outer_div.appendChild(inner_div);
+          section.appendChild(header);
+          section.appendChild(outer_div);
+          parent.insertBefore(section,footer);
+        }
+
+      $( document ).ready(function(){
+        firebase.database().ref('/1').on('value',function(snapshot) {
+          var r1 = $("#rack1").text((snapshot.val() && snapshot.val().current_weight));
+        });
+        firebase.database().ref('/2').on('value',function(snapshot) {
+          var r2 = $("#rack2").text((snapshot.val() && snapshot.val().current_weight));
+        });
+        firebase.database().ref().once('value',function(snapshot) {
+          snapshot.forEach(function(childsnapshot){
+			         //console.log(childsnapshot.key);
+               firebase.database().ref(childsnapshot.key).once('value',function(childsnapshot){
+                 var image_url = (childsnapshot.val() && childsnapshot.val().img_url);
+                 var pname = (childsnapshot.val() && childsnapshot.val().Title);
+                 var pdscp = (childsnapshot.val() && childsnapshot.val().Description);
+                 var pprice = (childsnapshot.val() && childsnapshot.val().Price);
+                 var weight = (childsnapshot.val() && childsnapshot.val().item_weight);
+                 var current_weight = (childsnapshot.val() && childsnapshot.val().current_weight);
+                 var date = (childsnapshot.val() && childsnapshot.val().Expiry_Date);
+                 var item_cnt = current_weight/weight;
+                 var decimal = item_cnt - Math.floor(item_cnt)
+                 if(decimal >= 0.50){
+                   item_cnt = Math.ceil(item_cnt);
+                 }
+                 else{
+                   item_cnt = Math.floor(item_cnt);
+                 }
+                 var data = {
+                 Description: pdscp,
+                 Expiry_Date: date,
+                 Price:pprice,
+                 Title:pname,
+                 img_url: image_url,
+                 item_weight: weight
+                 };
+                 //console.log(data);
+                 createCard(data,item_cnt,childsnapshot.key);
+               });
+             });
+           });
+
+           firebase.database().ref().on('child_changed',function(snapshot) {
+             //console.log(snapshot.key);
+             //snapshot.forEach(function(childsnapshot){
+                //firebase.database().ref(childsnapshot.key).once('value',function(snapshot){
+                  //console.log("child update");
+                  var pname = (snapshot.val() && snapshot.val().Title);
+                  var weight = (snapshot.val() && snapshot.val().item_weight);
+                  var current_weight = (snapshot.val() && snapshot.val().current_weight);
+                  var item_cnt = current_weight/weight;
+                  var Threshold = (snapshot.val() && snapshot.val().Threshold);
+                  var key = (snapshot.val() && snapshot.key);
+                  //console.log(key);
+                  var decimal = item_cnt - Math.floor(item_cnt);
+                  if(decimal >= 0.50){
+                    item_cnt = Math.ceil(item_cnt);
+                  }
+                  else{
+                    item_cnt = Math.floor(item_cnt);
+                  }
+                  var path = "item-count-" + snapshot.key;
+                  //console.log(path);
+                  document.getElementById(path).textContent=item_cnt;
+                  checkThres(item_cnt,notifications_array,Threshold,pname);
+                //});
+             //});
+           });
+
+           function checkThres(item_cnt,notifications_array,current_cnt,rack_product){
+             //console.log(current_cnt);
+             if(item_cnt < current_cnt){
+               var str = "Your " + rack_product + " will be out of stock soon. Please refill.";
+               notifications_array.push(str);
+               var size = notifications_array.length;
+               alerticon = document.getElementById('notif_val');
+               alerticon.setAttribute('data-badge',size);
+               var p = $("#notifications_val");
+               for(notif in notifications_array){
+                  var newLi = document.createElement("li"),list = document.getElementById('notifications_val'),
+                  content = document.createTextNode(notifications_array[notif]);
+                  newLi.appendChild(content);
+                  list.appendChild(newLi);
+               }
+             }
+           }
+      });
+      function showNotif(){
+        var dialog = document.querySelector('dialog');
+
+        if (! dialog.showModal) {
+          dialogPolyfill.registerDialog(dialog);
+        }
+          dialog.showModal();
+          dialog.querySelector('.close').addEventListener('click', function() {
+            dialog.close();
+          });
+          dialog.querySelector('.clear').addEventListener('click', function() {
+            notifications_array = [];
+            var size = notifications_array.length;
+            $("#notifications_val").empty();
+            alerticon = document.getElementById('notif_val');
+            alerticon.setAttribute('data-badge',size);
+
+          });
+      }
+    </script>
+  </body>
+  </html>

@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="style.css" rel="stylesheet" />
+	<meta charset=utf-8 />
+	<title>Visual style</title>
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.2.13/cytoscape.min.js"></script>
+
+	<script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
+	<script>
+  // Initialize Firebase
+  var config = {
+  	apiKey: "AIzaSyBlfl-T8RJEkSI1HArdKkJpw5Xo1D2SdtU",
+  	authDomain: "faq-ovhirm.firebaseapp.com",
+  	databaseURL: "https://faq-ovhirm.firebaseio.com",
+  	projectId: "faq-ovhirm",
+  	storageBucket: "faq-ovhirm.appspot.com",
+  	messagingSenderId: "763551248706"
+  };
+  firebase.initializeApp(config);
+</script>
+</head>
+
+<body>
+	<div id="cy"></div>
+	<!-- Load application code at the end to ensure DOM is loaded -->
+	<script type="text/javascript">
+		var color;
+		var container = document.getElementById('cy');
+		var layout =  {
+			name: 'cose',
+			padding: 10
+		};
+
+		var style =  cytoscape.stylesheet()
+		.selector('node')
+		.css({
+			'shape': 'data(faveShape)',
+			'width': 'mapData(weight, 40, 40, 40, 40)',
+			'content': 'data(name)',
+			'text-valign': 'center',
+			'text-outline-width': 1,
+			'text-outline-color': 'data(faveColor)',
+			'background-color': 'data(faveColor)',
+			'color': '#fff'
+		})
+		.selector(':selected')
+		.css({
+			'border-width': 3,
+			'border-color': '#333'
+		})
+		.selector('edge')
+		.css({
+			'curve-style': 'bezier',
+			'opacity': 0.666,
+			'width': 'mapData(strength, 70, 100, 2, 6)',
+			'target-arrow-shape': 'triangle',
+			'source-arrow-shape': 'circle',
+			'line-color': 'data(faveColor)',
+			'source-arrow-color': 'data(faveColor)',
+			'target-arrow-color': 'data(faveColor)'
+		})
+		.selector('edge.questionable')
+		.css({
+			'line-style': 'dotted',
+			'target-arrow-shape': 'diamond'
+		})
+		.selector('.faded')
+		.css({
+			'opacity': 0.25,
+			'text-opacity': 0
+		});
+		var newEle = {
+			nodes: [
+			{ data: { id: '1', name: 'Health', weight: 30, faveColor: '#B2E2f3', faveShape: 'triangle' } },
+			{ data: { id: '2', name: 'Cereal', weight: 30, faveColor: '#B2E2f3', faveShape: 'ellipse' } },
+			{ data: { id: '3', name: 'Gourmet', weight: 30, faveColor: '#B2E2f3', faveShape: 'octagon' } },
+			{ data: { id: '4', name: 'Cookie', weight: 30 , faveColor: '#B2E2f3', faveShape: 'rectangle' } }
+			],
+			edges :[
+
+			]
+		}
+		var arr = [];
+		var color = [];
+		var hex = "#1a1a1a";
+		firebase.database().ref('/').on('child_changed',function(data){
+			e = data.val().zone_path;
+			console.log(e);
+			arr = [];
+			arr = e.path.split('');
+			color = e.colour_val.split(",");
+			var hex = rgbToHex(parseInt(color[0]),parseInt(color[1]),parseInt(color[2]));
+			console.log(hex);	
+			console.log(arr);
+			for(i=0;i<arr.length-1;i++){
+				console.log("Path")
+				console.log(arr[i],arr[i+1]);
+				var newEdge =  { 
+					data: { 
+						source: arr[i], 
+						target: arr[i+1],
+						faveColor: hex,
+						strength: 60
+					} };
+					newEle.edges.push(newEdge);
+				}
+				cytoscape({ elements:newEle, container: container,style:style,layout:layout });
+				for (var i = newEle.edges.length - 1; i >= 0; i--) {
+					console.log(newEle.edges[i] + "Popped");
+					newEle.edges.pop(newEle.edges[i]);
+				}
+
+			});
+		function componentToHex(c) {
+			var hex = c.toString(16);
+			return hex.length == 1 ? "0" + hex : hex;
+		}
+
+		function rgbToHex(r, g, b) {
+			return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+		}	
+
+	</script>
+</body>
+</html>
